@@ -3,4 +3,4 @@
 
 ### Usage: ``npm run vuedemo``
 
-### /base/demo.html
+### then-> [Click Me](http://localhost:3000/vue/base/demo.html)
