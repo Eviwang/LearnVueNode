@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body>
+
+    
+
+    
+    <div id="app">       
+        <div>
+            Id:<input type="text" v-model="person.id">
+            Name:<input type="text" v-model="person.name">
+            Info:<input type="text" v-model="person.info">
+            <button @click="create">Add</button>
+        </div>
+        <table border="1" cellspadding=0 cellspaces=0>
+            <caption v-text="msg"></caption>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Info</td>
+                    <td>Edit</td>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) of persons">
+                    <td v-text="item.id"></td>
+                    <td v-text="item.name"></td>
+                    <td v-text="item.info"></td>
+                    <td><button @click="deletePerson(index)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../_package/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"Hello world!",
+                persons:[{
+                    id:1,
+                    name:"A",
+                    info:"test"
+                }],
+                person:{
+                    id:null,
+                    name:null,
+                    info:null
+                }      
+            },
+            methods:{
+                create:function(){            
+                    this.persons.push({
+                        id:this.person.id,
+                        name:this.person.name,
+                        info:this.person.info
+                    });
+                    this.person.id = null;
+                    this.person.name = null;
+                    this.person.info = null;
+                },
+                deletePerson:function(index){
+                    console.log(index);
+                    this.persons.splice(index,1);
+                }      
+            }
+        });
+    </script>
+</body>
+</html>
