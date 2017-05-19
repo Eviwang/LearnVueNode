@@ -1,0 +1,7 @@
+{
+  "css": {
+    "style": [
+      "vue/css/bootstrap.css"
+    ]
+  }
+}
