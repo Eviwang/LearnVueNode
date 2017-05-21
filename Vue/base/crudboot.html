@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="../_source/css/bootstrap.css" rel=stylesheet type=text/css>
+
+    <style>
+        .box{
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="btn">
+
+</div>
+
+    <div class="container">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="text-center text-danger">
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center">
+                    <td>1</td>
+                    <td>AA</td>
+                    <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mydailog">删除</button></td>
+                    </th>
+            </tbody>
+        </table>
+
+
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+        <div class="modal fade" id="mydailog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close">
+                            <span data-dismiss="modal">&times;</span>
+                        </button>
+                        <h4 class="modal-title">确认删除？</h4>
+                    </div>
+                    <div class="modal-body text-right">
+                        <h4 class="btn btn-danger">取消</h4>
+                        <h4 class="btn btn-danger">确认</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="../_package/vue.js"></script>
+    <script src="../_package/jquery.js"></script>
+    <script src="../_package/bootstrap.js"></script>
+
+
+</body>
+
+</html>
