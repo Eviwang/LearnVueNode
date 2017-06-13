@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="box">
+        
+    </ul>
+    
+    <script>    
+        var socket = new WebSocket("ws://127.0.0.1:5000");
+        socket.onopen = function(){
+            console.log("open");
+            setInterval(function(){
+                socket.send("hello");
+            },500);
+        }
+        var box = document.querySelector("#box");
+        socket.onmessage = function(e){
+            box.innerHTML = box.innerHTML + '<li>'+e.data+'</li>'
+        }
+    </script>
+</body>
+</html>
