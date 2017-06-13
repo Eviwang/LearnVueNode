@@ -147,3 +147,40 @@ function send(socket,msg) {
   socket.write(newFrame, 'binary');
   socket.write(msg, 'utf8');
 }
+
+//接受
+var ondata = function (data, start, end) {
+  var message = data.slice(start, end);
+  var FIN = (message[0] & 0x80);
+  var RSV1 = (message[0] & 0x40);
+  var RSV2 = (message[0] & 0x20);
+  var RSV3 = (message[0] & 0x10);
+  var Opcode = message[0] & 0x0F;
+  var mask = (message[1] & 0x80);
+  var length = (message[1] & 0x7F);
+
+  var nextByte = 2;
+  if (length === 126) {
+    // length = next 2 bytes
+    nextByte += 2;
+  } else if (length === 127){
+    // length = next 8 bytes
+    nextByte += 8;
+  }
+
+  var maskingKey = null;
+  if (mask){
+    maskingKey = message.slice(nextByte, nextByte + 4);
+    nextByte += 4;
+  }
+
+  var payload = message.slice(nextByte, nextByte + length);
+
+  if (maskingKey){
+    for (var i = 0; i < payload.length; i++){
+      payload[i] = payload[i] ^ maskingKey[i % 4];
+    }
+  }
+
+  console.log(payload.toString());
+};
