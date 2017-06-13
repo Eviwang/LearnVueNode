@@ -149,6 +149,7 @@ function send(socket,msg) {
 }
 
 //接受
+//https://stackoverflow.com/questions/14514657/how-do-you-process-a-basic-websocket-frame
 var ondata = function (data, start, end) {
   var message = data.slice(start, end);
   var FIN = (message[0] & 0x80);
