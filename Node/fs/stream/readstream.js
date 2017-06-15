@@ -9,12 +9,14 @@ class MyReadable extends Readable {
   // 触发系统底层对流的读取
   _read() {
     const data = this.dataSource.makeData();
-    this.push(data);
+    console.log("read data",String(data));  
+    var isOk = this.push(data);
+    console.log("push ok?",isOk);
   }
 }
 // 模拟资源池
 const dataSource = {
-  data: new Array(10).fill('-'),
+  data: new Array(10).fill("-").map((x,i)=>(i+1).toString()),
   // 每次读取时 pop 一个数据
   makeData() {
     if (!dataSource.data.length) return null;
@@ -22,14 +24,15 @@ const dataSource = {
   }
 };
 
-/*
+
 const myReadable = new MyReadable(dataSource);
 myReadable.setEncoding('utf8');
 myReadable.on('data', (chunk) => {
-  console.log(chunk);
+  console.log("--------data consumed:",chunk);
 });
-*/
 
+
+/*
 const myReadable = new MyReadable(dataSource);
 myReadable.setEncoding('utf8');
 myReadable.on('readable', (data) => {
@@ -38,3 +41,4 @@ myReadable.on('readable', (data) => {
     console.log(`Received ${chunk.length} bytes of data.${chunk.toString()}`);
   }
 });
+*/
